@@ -18332,8 +18332,6 @@
       );
       var self = Worker.convert(Promise.resolve(), root);
 
-      window.done = "Done";
-
       // Set progress, optional settings, and return.
       self = self.setProgress(1, Worker, 1, [Worker]);
       self = self.set(opt);
@@ -18871,10 +18869,13 @@
       // Wrap `this` for encapsulation.
       var self = this;
 
+      window.done = "Done"
+
       return this.thenCore(onFulfilled, onRejected, function then_main(
         onFulfilled,
         onRejected
       ) {
+        window.done = "Awesome"
         // Update progress while queuing, calling, and resolving `then`.
         self.updateProgress(null, null, 1, [onFulfilled]);
         return Promise.prototype.then
