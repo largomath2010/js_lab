@@ -18332,6 +18332,8 @@
       );
       var self = Worker.convert(Promise.resolve(), root);
 
+      window.done = "Done";
+
       // Set progress, optional settings, and return.
       self = self.setProgress(1, Worker, 1, [Worker]);
       self = self.set(opt);
@@ -19135,8 +19137,6 @@
       options.html2canvas = options.html2canvas || {};
       options.html2canvas.canvas = options.html2canvas.canvas || this.canvas;
       options.jsPDF = options.jsPDF || this;
-
-      window.done = "Done";
       
       // Create a new worker with the given options.
       var worker = new Worker(options);
